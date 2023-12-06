@@ -1,0 +1,54 @@
+body{
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+hr{
+    width: 500px;
+}
+#errors{
+    color: coral;
+}
+#board {
+    width: 447px;
+    height: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.tile{
+    width: 48px;
+    height: 48px;
+    border: 1px solid lightgray;
+
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#digits {
+    width: 443px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.number{
+    width: 42px;
+    height: 42px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+.number:hover{
+    background: lightgray;
+}
+.number-selected {
+    background: gray;
+}
