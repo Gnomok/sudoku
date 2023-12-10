@@ -52,3 +52,12 @@ hr{
 .number-selected {
     background: gray;
 }
+.tile-start{
+    background: whitesmoke;
+}
+.horizontal-line{
+    border-bottom: 1px solid black;
+}
+.vertical-line{
+    border-right: 1px solid black;
+}
