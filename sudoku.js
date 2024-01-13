@@ -6,6 +6,8 @@ var totalNumbers = -1; // Initial count of empty cells (excluding predefined val
 var winSound = new Audio('win_sound.wav')
 var correctSound = new Audio('correct_sound.wav')
 var mistakeSound = new Audio('mistake_sound.wav')
+var solution;
+var board;
 var easyBoard = [
     "53--7----",
     "6--195---",
@@ -19,11 +21,11 @@ var easyBoard = [
 ];
 
 var mediumBoard = [
-    "--4-1---7",
-    "--53-----",
+    "--41----7",
+    "---53----",
     "8-2---5--",
-    "------9-6",
-    "--9-----4",
+    "25--1-9-6",
+    "--9-5---4",
     "7-1------",
     "--6---7-9",
     "-----82--",
@@ -31,10 +33,10 @@ var mediumBoard = [
 ];
 
 var hardBoard = [
-    "8-------3",
-    "--6-9--2-",
+    "8--1-5--3",
+    "--649--2-",
     "--5---8--",
-    "---7-4--5",
+    "3--7-4--5",
     "7-------1",
     "4--6-2---",
     "--3---6--",
@@ -57,36 +59,52 @@ var easySolution = [
 ];
 
 var mediumSolution = [
-    "124819657",
-    "865327491",
-    "937654182",
-    "512983764",
-    "698471235",
-    "473265918",
-    "381742596",
-    "746598321",
-    "259136847"
+    "564189327",
+    "197532648",
+    "832476591",
+    "253814976",
+    "689257134",
+    "741963852",
+    "416325789",
+    "975648213",
+    "328791465"
 ];
 
 var hardSolution = [
-    "815926743",
-    "736149825",
-    "249578361",
-    "183794256",
-    "572613984",
-    "461852397",
-    "394267518",
-    "628431579",
-    "957381642"
+    "827165493",
+    "136498527",
+    "945273816",
+    "398714265",
+    "762589341",
+    "451632789",
+    "583921674",
+    "614857932",
+    "279346158"
 ];
 
 // Function called when the page is loaded
 window.onload = function() {
     setGame(easyBoard, easySolution);
+    changeTheVariable1();
 }
-
+function changeTheVariable1(){
+    solution = easySolution;
+    board = easyBoard;
+    console.log(solution);
+}
+function changeTheVariable2(){
+    solution = mediumSolution;
+    board = mediumBoard;
+    console.log(solution);
+}
+function changeTheVariable3(){
+   solution = hardSolution;
+    board = hardBoard;
+    console.log(solution);
+}
 // Function to set up the game
-function setGame(board, solution){
+function setGame(board, solutionArray){
+    solution = solutionArray;
     document.getElementById("board").innerHTML = "";
     document.getElementById("errors").innerText = "0";
     errors = 0;
@@ -146,7 +164,7 @@ function selectTile(){
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
         // Check for a match with the solution and handle errors
-        if(easySolution[r][c] == numSelected.id && easyBoard[r][c] === "-"){
+        if(solution[r][c] == numSelected.id && board[r][c] === "-"){
             correctSound.play();
             this.innerText = numSelected.id;
             correctNumbers++;
