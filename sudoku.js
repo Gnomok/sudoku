@@ -1,8 +1,8 @@
-var numSelected = null; // Selected number
-var tileSelected = null; // Selected tile
-var errors = 0; // Number of errors
-var correctNumbers= 0; // Number of correctly filled numbers
-var totalNumbers = -1; // Initial count of empty cells (excluding predefined values)
+var numSelected = null; 
+var tileSelected = null; 
+var errors = 0; 
+var correctNumbers= 0; 
+var totalNumbers = -1; 
 var winSound = new Audio('win_sound.wav')
 var correctSound = new Audio('correct_sound.wav')
 var mistakeSound = new Audio('mistake_sound.wav')
@@ -90,20 +90,19 @@ window.onload = function() {
 function changeTheVariable1(){
     solution = easySolution;
     board = easyBoard;
-    console.log(solution);
 }
 function changeTheVariable2(){
     solution = mediumSolution;
     board = mediumBoard;
-    console.log(solution);
 }
 function changeTheVariable3(){
    solution = hardSolution;
     board = hardBoard;
-    console.log(solution);
 }
 // Function to set up the game
 function setGame(board, solutionArray){
+    totalNumbers = -1;
+    correctNumbers = 0;
     solution = solutionArray;
     document.getElementById("board").innerHTML = "";
     document.getElementById("errors").innerText = "0";
@@ -127,12 +126,10 @@ function setGame(board, solutionArray){
             let tile = document.createElement("div");    
             tile.id = r.toString() + "-" + c.toString();
 
-            // Fill in the initial state of the board
             if(board[r][c] != "-"){
                 tile.innerText = board[r][c];
                 tile.classList.add("tile-start")
             }
-            // Add styles for separating blocks
             if(r == 2 || r == 5){
                 tile.classList.add("horizontal-line")
             }
